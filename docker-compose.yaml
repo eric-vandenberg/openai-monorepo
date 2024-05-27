@@ -1,0 +1,13 @@
+services:
+  beatsheets:
+    build:
+      context: .
+      dockerfile: ./apps/beatsheets/Dockerfile
+      target: development
+    command: pnpm run start:dev beatsheets
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+  mongo:
+    image: mongo
