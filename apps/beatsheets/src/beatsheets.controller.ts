@@ -3,35 +3,44 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
+  Put,
+  UseGuards,
 } from '@nestjs/common';
 import { BeatsheetsService } from './beatsheets.service';
 import { CreateBeatsheetDto } from './dto/create-beatsheet.dto';
 import { UpdateBeatsheetDto } from './dto/update-beatsheet.dto';
+import { CurrentUser, JwtAuthGuard, UserDto } from '@app/common';
 
 @Controller('beatsheets')
 export class BeatsheetsController {
   constructor(private readonly beatsheetsService: BeatsheetsService) {}
 
   @Post()
-  create(@Body() createBeatsheetDto: CreateBeatsheetDto) {
-    return this.beatsheetsService.create(createBeatsheetDto);
+  @UseGuards(JwtAuthGuard)
+  async create(
+    @Body() createBeatsheetDto: CreateBeatsheetDto,
+    @CurrentUser() user: UserDto,
+  ) {
+    return this.beatsheetsService.create(createBeatsheetDto, user._id);
   }
 
   @Get()
-  findAll() {
+  @UseGuards(JwtAuthGuard)
+  async findAll() {
     return this.beatsheetsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  @UseGuards(JwtAuthGuard)
+  async findOne(@Param('id') id: string) {
     return this.beatsheetsService.findOne(id);
   }
 
-  @Patch(':id')
-  update(
+  @Put(':id')
+  @UseGuards(JwtAuthGuard)
+  async update(
     @Param('id') id: string,
     @Body() updateBeatsheetDto: UpdateBeatsheetDto,
   ) {
@@ -39,7 +48,8 @@ export class BeatsheetsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  @UseGuards(JwtAuthGuard)
+  async remove(@Param('id') id: string) {
     return this.beatsheetsService.remove(id);
   }
 }
