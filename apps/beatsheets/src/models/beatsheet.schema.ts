@@ -7,6 +7,9 @@ export class BeatsheetDocument extends AbstractDocument {
   title: string;
 
   @Property()
+  userId: string;
+
+  @Property()
   beats: string[];
 }
 

@@ -7,8 +7,11 @@ import { BeatsheetsRepository } from './beatsheets.repository';
 export class BeatsheetsService {
   constructor(private readonly beatsheetRepository: BeatsheetsRepository) {}
 
-  create(createBeatsheetDto: CreateBeatsheetDto) {
-    return this.beatsheetRepository.create(createBeatsheetDto);
+  create(createBeatsheetDto: CreateBeatsheetDto, userId: string) {
+    return this.beatsheetRepository.create({
+      ...createBeatsheetDto,
+      userId,
+    });
   }
 
   findAll() {
