@@ -59,6 +59,9 @@ importers:
       mongoose:
         specifier: ^8.4.0
         version: 8.4.0
+      mongoose-autopopulate:
+        specifier: ^1.1.0
+        version: 1.1.0(mongoose@8.4.0)
       nestjs-pino:
         specifier: ^4.1.0
         version: 4.1.0(@nestjs/common@10.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(pino-http@10.1.0)
@@ -2367,6 +2370,11 @@ packages:
         optional: true
       socks:
         optional: true
+
+  mongoose-autopopulate@1.1.0:
+    resolution: {integrity: sha512-nTlTMlu1fLQ1bmJT7ILKbZmPGt2fHErLO4UJwzMDsHSigjtUYz0l3nvFhg511QkOkZcKBRzOnPn3DmmLIUENzg==}
+    peerDependencies:
+      mongoose: 6.x || 7.x || 8.0.0-rc0 || 8.x
 
   mongoose@8.4.0:
     resolution: {integrity: sha512-fgqRMwVEP1qgRYfh+tUe2YBBFnPO35FIg2lfFH+w9IhRGg1/ataWGIqvf/MjwM29cZ60D5vSnqtN2b8Qp0sOZA==}
@@ -5914,6 +5922,10 @@ snapshots:
       '@mongodb-js/saslprep': 1.1.7
       bson: 6.7.0
       mongodb-connection-string-url: 3.0.1
+
+  mongoose-autopopulate@1.1.0(mongoose@8.4.0):
+    dependencies:
+      mongoose: 8.4.0
 
   mongoose@8.4.0:
     dependencies:
