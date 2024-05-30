@@ -21,6 +21,7 @@ import { CreateBeatDto } from './dto/create-beat.dto';
 import { UpdateBeatDto } from './dto/update-beat.dto';
 import { CreateBeatsheetDto } from './dto/create-beatsheet.dto';
 import { UpdateBeatsheetDto } from './dto/update-beatsheet.dto';
+import { Types } from 'mongoose';
 
 @Controller('beatsheet')
 export class BeatsheetsController {
@@ -42,6 +43,9 @@ export class BeatsheetsController {
     const beatsheet = await this.beatsheetsService.findOne(id);
     const beat = await this.beatsService.findOne(beatId);
 
+    console.log('beatsheet : ', beatsheet);
+    console.log('beat : ', beat);
+
     if (
       beatsheet &&
       beat &&
@@ -51,7 +55,7 @@ export class BeatsheetsController {
 
       beat.acts.push(act._id);
 
-      await this.beatsService.update(beatId, beat);
+      await this.beatsService.updateOne(beatId, beat);
 
       return act;
     }
@@ -82,7 +86,7 @@ export class BeatsheetsController {
       beatsheet.beats.some((objId) => objId.toHexString() === beatId) &&
       beat.acts.some((objId) => objId.toHexString() === actId)
     ) {
-      return this.actsService.update(actId, updateActDto);
+      return this.actsService.updateOne(actId, updateActDto);
     }
 
     throw new BadRequestException(
@@ -101,7 +105,7 @@ export class BeatsheetsController {
   ) {
     const beatsheet = await this.beatsheetsService.findOne(id);
     const beat = await this.beatsService.findOne(beatId);
-    const act = await this.actsService.findOne(actId);
+    let act = await this.actsService.findOne(actId);
 
     if (
       beatsheet &&
@@ -110,11 +114,11 @@ export class BeatsheetsController {
       beatsheet.beats.some((objId) => objId.toHexString() === beatId) &&
       beat.acts.some((objId) => objId.toHexString() === actId)
     ) {
-      await this.actsService.remove(actId);
+      act = await this.actsService.removeOne(actId);
 
       beat.acts = beat.acts.filter((objId) => objId.toHexString() !== actId);
 
-      await this.beatsService.update(beatId, beat);
+      await this.beatsService.updateOne(beatId, beat);
 
       return act;
     }
@@ -139,7 +143,7 @@ export class BeatsheetsController {
 
       beatsheet.beats.push(beat._id);
 
-      await this.beatsheetsService.update(id, beatsheet);
+      await this.beatsheetsService.updateOne(id, beatsheet);
 
       return beat;
     }
@@ -166,11 +170,14 @@ export class BeatsheetsController {
       beat &&
       beatsheet.beats.some((objId) => objId.toHexString() === beatId)
     ) {
-      return this.beatsService.update(id, updateBeatDto);
+      updateBeatDto.acts = updateBeatDto.acts.map(
+        (strId) => new Types.ObjectId(strId),
+      );
+      return this.beatsService.updateOne(beatId, updateBeatDto);
     }
 
     throw new BadRequestException(
-      `Cannot delete beat for beatsheet id ${beatsheet._id} and beat id ${beat._id}`,
+      `Cannot update beat for beatsheet id ${beatsheet._id} and beat id ${beat._id}`,
     );
   }
 
@@ -180,20 +187,20 @@ export class BeatsheetsController {
   @UseGuards(JwtAuthGuard)
   async removeBeat(@Param('id') id: string, @Param('beatId') beatId: string) {
     const beatsheet = await this.beatsheetsService.findOne(id);
-    const beat = await this.beatsService.findOne(beatId);
+    let beat = await this.beatsService.findOne(beatId);
 
     if (
       beatsheet &&
       beat &&
       beatsheet.beats.some((objId) => objId.toHexString() === beatId)
     ) {
-      await this.beatsService.remove(beatId);
+      beat = await this.beatsService.removeOne(beatId);
 
       beatsheet.beats = beatsheet.beats.filter(
         (objId) => objId.toHexString() !== beatId,
       );
 
-      await this.beatsheetsService.update(beatId, beatsheet);
+      await this.beatsheetsService.updateOne(beatId, beatsheet);
 
       return beat;
     }
@@ -227,7 +234,7 @@ export class BeatsheetsController {
   @ApiTags('beatsheets')
   @UseGuards(JwtAuthGuard)
   async findOneBeatsheet(@Param('id') id: string) {
-    return this.beatsheetsService.findOne(id);
+    return this.beatsheetsService.findOne(id, false);
   }
 
   @Put(':id')
@@ -238,7 +245,10 @@ export class BeatsheetsController {
     @Param('id') id: string,
     @Body() updateBeatsheetDto: UpdateBeatsheetDto,
   ) {
-    return this.beatsheetsService.update(id, updateBeatsheetDto);
+    updateBeatsheetDto.beats = updateBeatsheetDto.beats.map(
+      (strId) => new Types.ObjectId(strId),
+    );
+    return this.beatsheetsService.updateOne(id, updateBeatsheetDto);
   }
 
   @Delete(':id')
@@ -246,6 +256,6 @@ export class BeatsheetsController {
   @ApiTags('beatsheets')
   @UseGuards(JwtAuthGuard)
   async removeBeatsheet(@Param('id') id: string) {
-    return this.beatsheetsService.remove(id);
+    return this.beatsheetsService.removeOne(id);
   }
 }

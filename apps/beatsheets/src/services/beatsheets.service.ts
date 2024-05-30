@@ -18,18 +18,19 @@ export class BeatsheetsService {
     return this.beatsheetRepository.find({});
   }
 
-  findOne(_id: string) {
-    return this.beatsheetRepository.findOne({ _id });
+  findOne(_id: string, lean: boolean = true) {
+    return this.beatsheetRepository.findOne({ _id }, lean);
   }
 
-  update(_id: string, updateBeatsheetDto: UpdateBeatsheetDto) {
+  updateOne(_id: string, updateBeatsheetDto: UpdateBeatsheetDto) {
     return this.beatsheetRepository.findOneAndUpdate(
       { _id },
       { $set: updateBeatsheetDto },
+      false,
     );
   }
 
-  remove(_id: string) {
-    return this.beatsheetRepository.findOneAndDelete({ _id });
+  removeOne(_id: string) {
+    return this.beatsheetRepository.findOneAndDelete({ _id }, false);
   }
 }

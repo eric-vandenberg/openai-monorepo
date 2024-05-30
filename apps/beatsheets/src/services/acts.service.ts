@@ -21,11 +21,15 @@ export class ActsService {
     return this.actRepository.findOne({ _id });
   }
 
-  update(_id: string, updateActDto: UpdateActDto) {
-    return this.actRepository.findOneAndUpdate({ _id }, { $set: updateActDto });
+  updateOne(_id: string, updateActDto: UpdateActDto) {
+    return this.actRepository.findOneAndUpdate(
+      { _id },
+      { $set: updateActDto },
+      false,
+    );
   }
 
-  remove(_id: string) {
-    return this.actRepository.findOneAndDelete({ _id });
+  removeOne(_id: string) {
+    return this.actRepository.findOneAndDelete({ _id }, false);
   }
 }
