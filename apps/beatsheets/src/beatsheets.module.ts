@@ -15,10 +15,6 @@ import { ActDocument, ActSchema } from './models/act.schema';
 import { BeatDocument, BeatSchema } from './models/beat.schema';
 import { BeatsheetDocument, BeatsheetSchema } from './models/beatsheet.schema';
 
-console.log('ActDocument.name : ', ActDocument.name);
-console.log('BeatDocument.name : ', BeatDocument.name);
-console.log('BeatsheetDocument.name : ', BeatsheetDocument.name);
-
 @Module({
   imports: [
     DatabaseModule,
