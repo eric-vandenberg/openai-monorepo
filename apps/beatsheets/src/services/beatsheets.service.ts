@@ -30,6 +30,6 @@ export class BeatsheetsService {
   }
 
   remove(_id: string) {
-    this.beatsheetRepository.findOneAndDelete({ _id });
+    return this.beatsheetRepository.findOneAndDelete({ _id });
   }
 }

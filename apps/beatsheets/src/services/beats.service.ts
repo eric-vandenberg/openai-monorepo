@@ -29,6 +29,6 @@ export class BeatsService {
   }
 
   remove(_id: string) {
-    this.beatRepository.findOneAndDelete({ _id });
+    return this.beatRepository.findOneAndDelete({ _id });
   }
 }
