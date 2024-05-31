@@ -1,10 +1,10 @@
 <br />
 
-<p align="center"><strong>studio-monorepo</strong> is a production grade monorepo ready to be scaled and distributed. Authentication is handled through JWT cookies from browser clients and through RPC calls between microservices on the same machine (locally) or within the same network namespace (kubernetes cluster).</p>
+<p align="center"><strong>studio-monorepo</strong> is a production grade monorepo designed to be scalable and extendable.</p>
 
-<br />
+<p align="center">Authentication is handled through JWT cookies from browser clients and through RPC calls between microservices on the same machine (locally) or within the same network namespace (kubernetes cluster).</p>
 
-<p align="center">This example provides business logic and data persistence for a potential app client to assist content creators in generating beat sheets as outlines to help guide new projects. OpenAI integration was added to help these creators discover new paths and possibilities in their creation process.</p>
+<p align="center">This example provides business logic and data persistence for a potential app client to assist Content Creators in generating <strong>beat sheets</strong> as outlines to help guide new projects. OpenAI integration was included as a way to discover new paths and possibilities in the creation process.</p>
 
 <br />
 
