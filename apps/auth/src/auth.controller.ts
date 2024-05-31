@@ -34,14 +34,3 @@ export class AuthController {
     return data.user;
   }
 }
-
-// {
-//   "_id": "6654e5736a61f06524a9a0f3",
-//   "email": "me@ericvandenberg.com",
-//   "password": "$2a$10$iDSimAA54qH3Tlv83/0v8OstarECUrOjwnCAU88J2Ec6pdLtGfkwS"
-// }
-
-// {
-//   "email": "me@ericvandenberg.com",
-//   "password": "Password!123"
-// }
