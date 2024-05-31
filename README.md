@@ -284,7 +284,8 @@ $ docker-compose up
 
 > [!NOTE]
 > To successful run this route, add an [OpenAI API key](https://platform.openai.com/api-keys) with access to a model
-> Once added, remember to restart the service
+> 
+> Once added, remember to restart the service and reauth your user
 
 <br />
 
