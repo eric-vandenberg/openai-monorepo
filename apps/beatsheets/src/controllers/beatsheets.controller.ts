@@ -11,17 +11,17 @@ import {
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CurrentUser, JwtAuthGuard, UserDto } from '@app/common';
-
-import { ActsService } from './services/acts.service';
-import { BeatsService } from './services/beats.service';
-import { BeatsheetsService } from './services/beatsheets.service';
-import { CreateActDto } from './dto/create-act.dto';
-import { UpdateActDto } from './dto/update-act.dto';
-import { CreateBeatDto } from './dto/create-beat.dto';
-import { UpdateBeatDto } from './dto/update-beat.dto';
-import { CreateBeatsheetDto } from './dto/create-beatsheet.dto';
-import { UpdateBeatsheetDto } from './dto/update-beatsheet.dto';
 import { Types } from 'mongoose';
+
+import { ActsService } from '../services/acts.service';
+import { BeatsService } from '../services/beats.service';
+import { BeatsheetsService } from '../services/beatsheets.service';
+import { CreateActDto } from '../dto/create-act.dto';
+import { UpdateActDto } from '../dto/update-act.dto';
+import { CreateBeatDto } from '../dto/create-beat.dto';
+import { UpdateBeatDto } from '../dto/update-beat.dto';
+import { CreateBeatsheetDto } from '../dto/create-beatsheet.dto';
+import { UpdateBeatsheetDto } from '../dto/update-beatsheet.dto';
 
 @Controller('beatsheet')
 export class BeatsheetsController {
