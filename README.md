@@ -314,14 +314,14 @@ $ docker-compose up
 <br />
 
 > [!TIP]
-> This walkthrough was [based on a beat sheet](https://savethecat.com/beat-sheets/someone-you-loved-beat-sheet) created by Cory Miles
+> This walkthrough was based on a [beat sheet](https://savethecat.com/beat-sheets/someone-you-loved-beat-sheet) created by Cory Miles
 
 <br />
 
 ## Test
 
 > [!IMPORTANT]
-> Unit tests are still under construction 🏗️
+> Unit & E2E tests are still under construction 🏗️
 
 ```bash
 # unit tests
