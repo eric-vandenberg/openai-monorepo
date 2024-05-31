@@ -1,10 +1,16 @@
-## Description
+<br />
+
+<p align="center"><strong>studio-monorepo</strong> is a production grade monorepo ready to be scaled and distributed. Authentication is handled through JWT cookies from browser clients and through RPC calls between microservices on the same machine (locally) or within the same network namespace (kubernetes cluster). This example provides business logic and data persistence for a potential app client to assist content creators in generating beat sheets as outlines to help guide new projects. OpenAI integration was added to help these creators discover new paths and possibilities in their creation process.</p>
+
+<br />
+
+## Features
 
 - NestJS monorepo
 - 2 microservices
-  - Auth
+  - Auth microservice
     - User Model
-  - Beatsheets
+  - Beatsheets microservice
     - Act Model
     - Beat Model
     - Beatsheet Model
@@ -17,19 +23,19 @@
   - OpenAI integration to suggest next beat/act
 
 > [!NOTE]
-> Requests made to the Beatsheets microservice are authenticated through the Auth microservice via TCP rpc
+> Requests made to the Beatsheets microservice are authenticated through the Auth microservice via RPC (TCP)
 
 <br />
 
 ## System Requirements
 
-### PNPM
+### pnpm
 
 pnpm: https://pnpm.io/installation
 
 ### Docker Desktop
 
-https://www.docker.com/products/docker-desktop/
+docker & docker-compose: https://www.docker.com/products/docker-desktop/
 
 <br />
 
@@ -73,23 +79,9 @@ $ docker-compose up
 
 <br />
 
-## Test
-
-> [!IMPORTANT]
-> Unit tests are still under construction 🏗️
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
 ## ✨ Walkthrough ✨
+
+<br />
 
 1. Create your user
 
@@ -319,6 +311,24 @@ $ pnpm run test:cov
 
 > [!TIP]
 > This walkthrough was [based on a beat sheet](https://savethecat.com/beat-sheets/someone-you-loved-beat-sheet) created by Cory Miles
+
+<br />
+
+## Test
+
+> [!IMPORTANT]
+> Unit tests are still under construction 🏗️
+
+```bash
+# unit tests
+$ pnpm run test
+
+# e2e tests
+$ pnpm run test:e2e
+
+# test coverage
+$ pnpm run test:cov
+```
 
 <br />
 
