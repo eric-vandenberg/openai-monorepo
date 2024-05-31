@@ -43,9 +43,6 @@ export class BeatsheetsController {
     const beatsheet = await this.beatsheetsService.findOne(id);
     const beat = await this.beatsService.findOne(beatId);
 
-    console.log('beatsheet : ', beatsheet);
-    console.log('beat : ', beat);
-
     if (
       beatsheet &&
       beat &&
