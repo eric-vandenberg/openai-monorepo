@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { Controller, Post, Res, UseGuards } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { ApiBody } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
@@ -14,9 +14,11 @@ import { LoginDto } from './dto/login.dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @UseGuards(LocalAuthGuard)
   @Post('login')
+  @ApiOperation({ summary: 'Login as user' })
   @ApiBody({ type: LoginDto })
+  @ApiTags('auth')
+  @UseGuards(LocalAuthGuard)
   async login(
     @CurrentUser() user: UserDocument,
     @Res({ passthrough: true }) response: Response,

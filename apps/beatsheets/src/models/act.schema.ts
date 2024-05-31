@@ -3,13 +3,13 @@ import { AbstractDocument } from '@app/common';
 
 @Schema({ versionKey: false })
 export class ActDocument extends AbstractDocument {
-  @Property()
+  @Property({ type: String, required: true })
   description: string;
 
-  @Property()
+  @Property({ type: Number, required: true })
   duration: number;
 
-  @Property()
+  @Property({ type: String, required: true })
   cameraAngle: string;
 }
 

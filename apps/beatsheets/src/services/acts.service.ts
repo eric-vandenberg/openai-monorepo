@@ -7,9 +7,9 @@ import { ActsRepository } from '../repositories/acts.repository';
 export class ActsService {
   constructor(private readonly actRepository: ActsRepository) {}
 
-  create(createBeatDto: CreateActDto) {
+  create(createActDto: CreateActDto) {
     return this.actRepository.create({
-      ...createBeatDto,
+      ...createActDto,
     });
   }
 
@@ -21,14 +21,15 @@ export class ActsService {
     return this.actRepository.findOne({ _id });
   }
 
-  update(_id: string, updateBeatDto: UpdateActDto) {
+  updateOne(_id: string, updateActDto: UpdateActDto) {
     return this.actRepository.findOneAndUpdate(
       { _id },
-      { $set: updateBeatDto },
+      { $set: updateActDto },
+      false,
     );
   }
 
-  remove(_id: string) {
-    this.actRepository.findOneAndDelete({ _id });
+  removeOne(_id: string) {
+    return this.actRepository.findOneAndDelete({ _id }, false);
   }
 }

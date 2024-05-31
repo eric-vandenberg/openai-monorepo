@@ -6,7 +6,7 @@ import { ActDocument } from './act.schema';
 
 @Schema({ versionKey: false })
 export class BeatDocument extends AbstractDocument {
-  @Property()
+  @Property({ type: String, required: true })
   description: string;
 
   @Property({

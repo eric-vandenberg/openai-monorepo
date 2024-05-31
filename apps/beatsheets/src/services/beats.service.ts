@@ -21,14 +21,15 @@ export class BeatsService {
     return this.beatRepository.findOne({ _id });
   }
 
-  update(_id: string, updateBeatDto: UpdateBeatDto) {
+  updateOne(_id: string, updateBeatDto: UpdateBeatDto) {
     return this.beatRepository.findOneAndUpdate(
       { _id },
       { $set: updateBeatDto },
+      false,
     );
   }
 
-  remove(_id: string) {
-    this.beatRepository.findOneAndDelete({ _id });
+  removeOne(_id: string) {
+    return this.beatRepository.findOneAndDelete({ _id }, false);
   }
 }
