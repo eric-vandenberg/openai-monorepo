@@ -280,6 +280,22 @@ $ docker-compose up
 
 9. Get suggestion for next beat or act
 
+<br />
+
+> [!NOTE]
+> To successful run this route, add an [OpenAI API key](https://platform.openai.com/api-keys) with access to a model
+> Once added, remember to restart the service
+
+<br />
+
+```bash
+# apps/beatsheets/.env
+OPENAI_API_KEY=sk-proj-2Dr7z.....ar4ts
+OPENAI_MODEL=gpt-4
+```
+
+<br />
+
 ```bash
 # GET /openai/prompt - Get suggestion for next beat or act
 # http://localhost:3000/api#/openai/OpenaiController_suggestNext
@@ -317,7 +333,6 @@ $ docker-compose up
 
 <br />
 
-> [!TIP]
 > This walkthrough was based on a [beat sheet](https://savethecat.com/beat-sheets/someone-you-loved-beat-sheet) created by Cory Miles
 
 <br />
