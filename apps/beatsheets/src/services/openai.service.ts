@@ -7,9 +7,9 @@ import { ConfigService } from '@nestjs/config';
 import { ChatCompletionMessageParam } from 'openai/resources';
 import OpenAI from 'openai';
 
+import { CreateNextPromptDto } from '../dto/create-next-prompt.dto';
 import { BeatsheetsRepository } from '../repositories/beatsheets.repository';
 import { PromptsRepository } from '../repositories/prompts.repository';
-import { CreateNextPromptDto } from '../dto/create-next-prompt.dto';
 import { BeatDocument } from '../models/beat.schema';
 import { ActDocument } from '../models/act.schema';
 

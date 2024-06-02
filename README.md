@@ -282,9 +282,9 @@ $ docker-compose up
 
 <br />
 
-> [!NOTE]
+> [!IMPORTANT]
 > To successful run this route, add an [OpenAI API key](https://platform.openai.com/api-keys) with access to a model
-> 
+>
 > Once added, remember to restart the service and reauth your user
 
 <br />
@@ -340,7 +340,7 @@ OPENAI_MODEL=gpt-4
 
 ## Test
 
-> [!IMPORTANT]
+> [!NOTE]
 > Unit & E2E tests are still under construction 🏗️
 
 ```bash

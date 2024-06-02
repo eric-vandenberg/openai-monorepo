@@ -2,8 +2,8 @@ import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@app/common';
 
-import { OpenaiService } from '../services/openai.service';
 import { CreateNextPromptDto } from '../dto/create-next-prompt.dto';
+import { OpenaiService } from '../services/openai.service';
 
 @Controller('openai/prompt')
 export class OpenaiController {
