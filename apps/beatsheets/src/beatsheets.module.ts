@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import * as Joi from 'joi';
-import { AUTH_SERVICE, DatabaseModule, LoggerModule } from '@app/common';
 import OpenAI from 'openai';
+import { AUTH_SERVICE, DatabaseModule, LoggerModule } from '@app/common';
 
 import { ActsService } from './services/acts.service';
 import { BeatsService } from './services/beats.service';

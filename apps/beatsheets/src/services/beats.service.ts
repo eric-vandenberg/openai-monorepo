@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+
 import { CreateBeatDto } from '../dto/create-beat.dto';
 import { UpdateBeatDto } from '../dto/update-beat.dto';
 import { BeatsRepository } from '../repositories/beats.repository';

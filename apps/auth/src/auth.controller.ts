@@ -2,13 +2,13 @@ import { Response } from 'express';
 import { Controller, Post, Res, UseGuards } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CurrentUser } from '@app/common';
 
+import { LoginDto } from './dto/login.dto';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
-import { CurrentUser } from '@app/common';
 import { UserDocument } from './users/models/user.schema';
-import { LoginDto } from './dto/login.dto';
 
 @Controller('auth')
 export class AuthController {
