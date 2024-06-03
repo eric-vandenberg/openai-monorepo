@@ -1,8 +1,8 @@
 {
-  "name": "beatsheet",
+  "name": "studio-monorepo",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "A backend which allows creators to structure content into beat sheets",
+  "author": "Eric Vandenberg (contact@ericvandenberg.com)",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
