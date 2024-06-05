@@ -1,12 +1,12 @@
 services:
-  beatsheets:
+  prompts:
     build:
       context: .
-      dockerfile: ./apps/beatsheets/Dockerfile
+      dockerfile: ./apps/prompts/Dockerfile
       target: development
-    command: pnpm run start:dev beatsheets
+    command: pnpm run start:dev prompts
     env_file:
-      - ./apps/beatsheets/.env
+      - ./apps/prompts/.env
     ports:
       - '3000:3000'
     volumes:

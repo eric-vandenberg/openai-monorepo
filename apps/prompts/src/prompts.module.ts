@@ -5,28 +5,15 @@ import * as Joi from 'joi';
 import OpenAI from 'openai';
 import { AUTH_SERVICE, DatabaseModule, LoggerModule } from '@app/common';
 
-import { ActsService } from './services/acts.service';
-import { BeatsService } from './services/beats.service';
-import { BeatsheetsService } from './services/beatsheets.service';
 import { OpenaiService } from './services/openai.service';
-import { BeatsheetsController } from './controllers/beatsheets.controller';
 import { OpenaiController } from './controllers/openai.controller';
-import { ActsRepository } from './repositories/acts.repository';
-import { BeatsRepository } from './repositories/beats.repository';
-import { BeatsheetsRepository } from './repositories/beatsheets.repository';
 import { PromptsRepository } from './repositories/prompts.repository';
-import { ActDocument, ActSchema } from './models/act.schema';
-import { BeatDocument, BeatSchema } from './models/beat.schema';
-import { BeatsheetDocument, BeatsheetSchema } from './models/beatsheet.schema';
 import { PromptDocument, PromptSchema } from './models/prompt.schema';
 
 @Module({
   imports: [
     DatabaseModule,
     DatabaseModule.forFeature([
-      { name: ActDocument.name, schema: ActSchema },
-      { name: BeatDocument.name, schema: BeatSchema },
-      { name: BeatsheetDocument.name, schema: BeatsheetSchema },
       { name: PromptDocument.name, schema: PromptSchema },
     ]),
     LoggerModule,
@@ -51,15 +38,9 @@ import { PromptDocument, PromptSchema } from './models/prompt.schema';
       },
     ]),
   ],
-  controllers: [BeatsheetsController, OpenaiController],
+  controllers: [OpenaiController],
   providers: [
-    ActsService,
-    BeatsService,
-    BeatsheetsService,
     OpenaiService,
-    ActsRepository,
-    BeatsRepository,
-    BeatsheetsRepository,
     PromptsRepository,
     {
       provide: OpenAI,
@@ -72,4 +53,4 @@ import { PromptDocument, PromptSchema } from './models/prompt.schema';
     },
   ],
 })
-export class BeatsheetsModule {}
+export class PromptsModule {}
