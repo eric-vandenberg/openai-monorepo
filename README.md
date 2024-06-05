@@ -42,6 +42,19 @@ $ pnpm install
 
 ## Setup before Run
 
+> [!IMPORTANT]
+> Add an [OpenAI API key](https://platform.openai.com/api-keys) with access to a model (gpt-4)
+
+<br />
+
+```bash
+# apps/prompts/.env
+OPENAI_API_KEY=sk-proj-2Dr7z.....ar4ts
+OPENAI_MODEL=gpt-4
+```
+
+<br />
+
 ```bash
 # Auth microservice .env
 $ mv apps/auth/.env.template apps/auth/.env
@@ -109,21 +122,6 @@ $ docker-compose up
   "role": "system",
   "content": "You are a talented screenwriter who creates popular music videos."
 }
-```
-
-<br />
-
-> [!IMPORTANT]
-> To successful run this route, add an [OpenAI API key](https://platform.openai.com/api-keys) with access to a model
->
-> Once added, remember to restart the service and reauth your user
-
-<br />
-
-```bash
-# apps/prompts/.env
-OPENAI_API_KEY=sk-proj-2Dr7z.....ar4ts
-OPENAI_MODEL=gpt-4
 ```
 
 <br />
