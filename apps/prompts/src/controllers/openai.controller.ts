@@ -10,7 +10,7 @@ export class OpenaiController {
   constructor(private readonly openaiService: OpenaiService) {}
 
   @Post()
-  @ApiOperation({ summary: 'Create a prompt to suggest next beat or act' })
+  @ApiOperation({ summary: 'Create a prompt' })
   @ApiTags('openai')
   @UseGuards(JwtAuthGuard)
   async createPrompt(@Body() createNextPromptDto: CreateNextPromptDto) {
@@ -18,21 +18,10 @@ export class OpenaiController {
   }
 
   @Get(':promptId')
-  @ApiOperation({ summary: 'Get a prompt for next beat or act' })
+  @ApiOperation({ summary: 'Get a prompt' })
   @ApiTags('openai')
   @UseGuards(JwtAuthGuard)
   async findOnePrompt(@Param('promptId') promptId: string) {
     return this.openaiService.findOnePrompt(promptId);
-  }
-
-  @Get(':promptId/beatsheet/:id')
-  @ApiOperation({ summary: 'Get suggestion for next beat or act' })
-  @ApiTags('openai')
-  @UseGuards(JwtAuthGuard)
-  async suggestNext(
-    @Param('promptId') promptId: string,
-    @Param('id') id: string,
-  ) {
-    return await this.openaiService.suggestNext(promptId, id);
   }
 }

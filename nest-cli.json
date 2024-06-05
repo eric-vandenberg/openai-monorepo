@@ -1,11 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/beatsheets/src",
+  "sourceRoot": "apps/prompts/src",
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
-    "tsConfigPath": "apps/beatsheets/tsconfig.app.json"
+    "tsConfigPath": "apps/prompts/tsconfig.app.json"
   },
   "projects": {
     "common": {
@@ -17,13 +17,13 @@
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
     },
-    "beatsheets": {
+    "prompts": {
       "type": "application",
-      "root": "apps/beatsheets",
+      "root": "apps/prompts",
       "entryFile": "main",
-      "sourceRoot": "apps/beatsheets/src",
+      "sourceRoot": "apps/prompts/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/beatsheets/tsconfig.app.json"
+        "tsConfigPath": "apps/prompts/tsconfig.app.json"
       }
     },
     "auth": {
@@ -37,5 +37,5 @@
     }
   },
   "monorepo": true,
-  "root": "apps/beatsheets"
+  "root": "apps/prompts"
 }
