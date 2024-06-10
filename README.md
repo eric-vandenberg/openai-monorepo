@@ -33,8 +33,8 @@ docker & docker-compose: https://www.docker.com/products/docker-desktop/
 ## Installation
 
 ```bash
-$ git clone git@github.com:eric-vandenberg/studio-monorepo.git
-$ cd studio-monorepo
+$ git clone git@github.com:eric-vandenberg/openai-monorepo.git
+$ cd openai-monorepo
 $ pnpm install
 ```
 
@@ -146,7 +146,7 @@ $ pnpm run test:cov
 
 ## License
 
-studio-monorepo is [MIT licensed](LICENSE).
+openai-monorepo is [MIT licensed](LICENSE).
 
 <br />
 
