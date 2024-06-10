@@ -17,6 +17,15 @@
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
     },
+    "auth": {
+      "type": "application",
+      "root": "apps/auth",
+      "entryFile": "main",
+      "sourceRoot": "apps/auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/auth/tsconfig.app.json"
+      }
+    },
     "prompts": {
       "type": "application",
       "root": "apps/prompts",
@@ -26,13 +35,13 @@
         "tsConfigPath": "apps/prompts/tsconfig.app.json"
       }
     },
-    "auth": {
+    "reservations": {
       "type": "application",
-      "root": "apps/auth",
+      "root": "apps/reservations",
       "entryFile": "main",
-      "sourceRoot": "apps/auth/src",
+      "sourceRoot": "apps/reservations/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/auth/tsconfig.app.json"
+        "tsConfigPath": "apps/reservations/tsconfig.app.json"
       }
     }
   },
