@@ -10,10 +10,10 @@ export class ReservationsService {
     private readonly reservationsRespository: ReservationsRepository,
   ) {}
 
-  create(createReservationDto: CreateReservationDto) {
+  create(createReservationDto: CreateReservationDto, userId: string) {
     return this.reservationsRespository.create({
       ...createReservationDto,
-      userId: '234',
+      userId,
     });
   }
 

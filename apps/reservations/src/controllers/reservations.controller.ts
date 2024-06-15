@@ -9,7 +9,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from '@app/common';
+import { CurrentUser, JwtAuthGuard, UserDto } from '@app/common';
 
 import { ReservationsService } from '../services/reservations.service';
 import { CreateReservationDto } from '../dto/create-reservation.dto';
@@ -23,15 +23,18 @@ export class ReservationsController {
   @ApiOperation({ summary: 'Create a reservation' })
   @ApiTags('reservations')
   @UseGuards(JwtAuthGuard)
-  create(@Body() createReservationDto: CreateReservationDto) {
-    return this.reservationsService.create(createReservationDto);
+  async create(
+    @Body() createReservationDto: CreateReservationDto,
+    @CurrentUser() user: UserDto,
+  ) {
+    return this.reservationsService.create(createReservationDto, user._id);
   }
 
   @Get()
   @ApiOperation({ summary: 'Get all reservations' })
   @ApiTags('reservations')
   @UseGuards(JwtAuthGuard)
-  findAll() {
+  async findAll() {
     return this.reservationsService.findAll();
   }
 
@@ -39,7 +42,7 @@ export class ReservationsController {
   @ApiOperation({ summary: 'Get a reservation' })
   @ApiTags('reservations')
   @UseGuards(JwtAuthGuard)
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.reservationsService.findOne(id);
   }
 
@@ -47,7 +50,7 @@ export class ReservationsController {
   @ApiOperation({ summary: 'Update a reservation' })
   @ApiTags('reservations')
   @UseGuards(JwtAuthGuard)
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateReservationDto: UpdateReservationDto,
   ) {
@@ -58,7 +61,7 @@ export class ReservationsController {
   @ApiOperation({ summary: 'Delete a reservation' })
   @ApiTags('reservations')
   @UseGuards(JwtAuthGuard)
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.reservationsService.remove(id);
   }
 }
