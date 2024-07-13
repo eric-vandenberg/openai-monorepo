@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { Response } from 'express';
+import { UserDocument } from '@app/common';
 
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { UserDocument } from './users/models/user.schema';
 
 describe('AuthController', () => {
   let authController: AuthController;
